@@ -1,18 +1,21 @@
-/* eslint-disable no-console */
-const Home = () => {
-  const handleClick = () => {
-    console.log('Salut à toi ')
-  }
+import { useState } from 'react'
 
-  const handleClickAgain = name => {
-    console.log('Salut ' + name)
+const Home = () => {
+  const [name, setName] = useState('Ben')
+  const [age, setAge] = useState(33)
+
+  const handleClick = () => {
+    setName('Aïda')
+    setAge(29)
   }
 
   return (
     <div className="home">
       <h2>Page d'accueil</h2>
+      <p>
+        {name} a {age} ans
+      </p>
       <button onClick={handleClick}>Appuie moi !</button>
-      <button onClick={() => handleClickAgain('Ben')}>Appuie moi encore !</button>
     </div>
   )
 }
