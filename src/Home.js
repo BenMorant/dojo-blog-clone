@@ -1,4 +1,4 @@
-import BlogList from 'BlogList'
+import ArticleList from 'ArticleList'
 import useFetch from './useFetch'
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     <div className="home">
       {error && <div>{error}</div>}
       {isPending && <div>En cours de chargement...</div>}
-      {articles && <BlogList articles={articles} title="Tous les articles" />}
+      {articles && <ArticleList articles={articles} title="Tous les articles" />}
     </div>
   )
 }
