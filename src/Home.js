@@ -1,18 +1,41 @@
+/* eslint-disable no-console */
+import { useEffect, useState } from 'react'
+
 import BlogList from 'BlogList'
-/* eslint-disable no-unused-vars */
-import { useState } from 'react'
 
 const Home = () => {
-  const [articles, setArticles] = useState([
-    { title: 'Mon nouvel article', body: 'lorem ipsum...', author: 'ben', id: 1 },
-    { title: 'Pendaison de Crémaillière', body: 'lorem ipsum...', author: 'aida', id: 2 },
-    { title: 'Ma patée', body: 'lorem ipsum...', author: 'ira', id: 3 },
-  ])
+  const [articles, setArticles] = useState(null)
+  const [isPending, setIsPending] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch('http://localhost:8000/blogs')
+        .then(res => {
+          if (!res.ok) {
+            // error coming back from server
+            throw Error('could not fetch the data for that resource')
+          }
+          return res.json()
+        })
+        .then(data => {
+          setIsPending(false)
+          setArticles(data)
+          setError(null)
+        })
+        .catch(err => {
+          // auto catches network / connection error
+          setIsPending(false)
+          setError(err.message)
+        })
+    }, 1000)
+  }, [])
 
   return (
     <div className="home">
-      <BlogList articles={articles} title="Tous les articles" />
-      <BlogList articles={articles.filter(article => article.author === 'ben')} title="Articles de Ben" />
+      {error && <div>{error}</div>}
+      {isPending && <div>En cours de chargement...</div>}
+      {articles && <BlogList articles={articles} title="Tous les articles" />}
     </div>
   )
 }

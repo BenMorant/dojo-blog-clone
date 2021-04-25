@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {
+      "title": "Mon premier article",
+      "body": "Pourquoi écrire ? \nÉcrire pour être soi. Lisez le livre de Kevin Nolaw !!! \nÉcrit-on pour vivre ou vit-on pour écrire ?",
+      "author": "ben",
+      "id": 1
+    },
+    {
+      "title": "Open House Party !",
+      "body": "Il y aura de la Slata méchouïa, de la shakshouka et de la moukhlia. \nEt du \"Couscous Polonais\" (Ben a insisté...)",
+      "author": "aida",
+      "id": 2
+    }
+  ]
+}

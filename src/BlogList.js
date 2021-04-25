@@ -9,5 +9,4 @@ const BlogList = ({ articles, title }) => (
     ))}
   </div>
 )
-
 export default BlogList
